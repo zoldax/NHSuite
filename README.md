@@ -1,10 +1,10 @@
-# 🛠️NHSuite 
+# 🛠️NHSuite 🛠
 
 NHSuite allows users to efficiently manage their QRadar Network Hierarchy. Utilizing the provided QRadar API, users can seamlessly export, import, and check domain-specific hierarchies in a CSV format.
 
 ---
 # Table of Contents
-- [🛠️NHSuite](#️qradarnhsuite)
+- [🛠️NHSuite](#️nhsuite)
   - [📌 Details](#-details)
   - [📖 Description](#-description)
   - [🛠️Usage](#️usage)

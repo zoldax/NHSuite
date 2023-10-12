@@ -57,10 +57,10 @@ To export the current QRadar Network Hierarchy into a CSV, use the `-e` or `--ex
 **Example**:
 ```bash
 # Export to default file name (network_hierarchy.csv)
-python NHSuite.py -e
+python3 NHSuite.py -e
 
 # Export to a specific file name
-python NHSuite.py -e my_network_data.csv
+python3 NHSuite.py -e my_network_data.csv
 ```
 
 ### 2. Importing Network Hierarchy from CSV:
@@ -71,7 +71,7 @@ Before importing a new network hierarchy, it's essential to have a backup of you
 **Example**:
 ```bash
 # Import from a specific CSV file
-python NHSuite.py -i path_to_my_network_data.csv
+python3 NHSuite.py -i path_to_my_network_data.csv
 ```
 
 ### 3. Checking Domain Information:
@@ -81,7 +81,7 @@ To retrieve and display domain information from QRadar, utilize the `--check-dom
 **Example**:
 ```bash
 # Fetch and display domain information from QRadar
-python NHSuite.py --check-domain
+python3 NHSuite.py --check-domain
 ```
 
 ### 3. Checking QRadar System Information:
@@ -91,7 +91,7 @@ To retrieve and display domain information from QRadar, utilize the `--check-ver
 **Example**:
 ```bash
 # Display system information from QRadar
-python NHSuite.py --check-version
+python3 NHSuite.py --check-version
 ```
 
 ## 📦 Requirements

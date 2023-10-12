@@ -5,7 +5,7 @@
    It offers tools for reading configuration files, preparing headers, making GET and PUT requests,
    and fetching application IDs.
 
-   Copyright 2023 Pascal Weber (zoldax)
+   Copyright 2023 Pascal Weber (zoldax) / Abakus Sécurité
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -69,8 +69,10 @@ def read_config(filename: str = 'config.txt') -> dict:
             return config_data
     except (FileNotFoundError, json.JSONDecodeError) as e:
         logger.error(f"Error reading configuration file {filename} : {e}")
+        print(f"Error reading configuration file {filename} : {e}")
     except Exception as e:
         logger.error(f"Unexpected error occurred while reading {filename} : {e}")
+        print(f"Unexpected error occurred while reading {filename} : {e}")
     return {}
 
 config = {**read_config()}
@@ -126,9 +128,11 @@ def make_request(url: str, method: str = "GET", params: Optional[dict] = None) -
 
     except (requests.RequestException, requests.exceptions.HTTPError) as e:
         logger.error(f"Error occurred during request: {e}")
+        print(f"Error occurred during request: {e}")
         return {}
     except Exception as e:
         logger.error(f"An unexpected error occurred: {e}")
+        print(f"An unexpected error occurred: {e}")
         return {}
 
 def get_app_id(app_name: str = "QRadar Use Case Manager") -> str:

@@ -3,7 +3,7 @@
 """
    qradarzoldaxclass.py
 
-   Copyright 2023 Pascal Weber (zoldax)
+   Copyright 2023 Pascal Weber (zoldax) / Abakus Sécurité
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.

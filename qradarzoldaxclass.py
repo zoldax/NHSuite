@@ -58,6 +58,9 @@ class QRadarNetworkHierarchy:
     valid_cidr_format(cidr: str) -> bool:
         Validates if a given string is in the correct CIDR format.
 
+    valid_network_name_format(name: str) -> bool:
+        Validate the network name format. Allowed characters: Alphanumerics, -, _""
+
     fetch_network_hierarchy() -> list:
         Fetches the QRadar Network Hierarchy from the API.
 
@@ -155,6 +158,11 @@ class QRadarNetworkHierarchy:
         except ValueError:
             return False
 
+    @staticmethod
+    def valid_network_name_format(name: str) -> bool:
+        """Validate the network name format. Allowed characters: Alphanumerics, -, _"""
+        return bool(re.match(r'^[A-Za-z0-9\-_]+$', name))
+
     # Functions for NH
 
     def fetch_network_hierarchy(self):
@@ -211,10 +219,16 @@ class QRadarNetworkHierarchy:
                 for row in reader:
                     network_obj = {
                         "id": int(row["id"]),
-                        "name": row["name"],
+                        #"name": row["name"],
                         "description": row["description"],
                         "domain_id": int(row["domain_id"]),
                     }
+                    if not self.valid_network_name_format(row["name"]):
+                        print(f"Invalid network name {row['name']} for id {row['id']}.")
+                        qradarzoldaxlib.logger.error(f"Invalid network name {row['name']} for id {row['id']} - aborting import.")
+                    else:
+                        name_val = row.get("name","").strip()
+                        network_obj["name"] = name_val
                     if not self.valid_cidr_format(row["cidr"]):
                         print(f"Invalid cidr {row['cidr']} for id {row['id']}.")
                         qradarzoldaxlib.logger.error(f"Invalid cidr {row['cidr']} for id {row['id']} - abort import.")

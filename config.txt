@@ -1,9 +1,9 @@
 {
-    "ip_QRadar": "192.168.10.146",
+    "ip_QRadar": "192.168.10.145",
     "auth": "a913b05c-cb81-4d2f-b286-2572f0c4baee",
     "Version": "17.0",
     "Accept": "application/json",
-    "verify_ssl": "False",        
+    "verify_ssl": "True",        
     "ssl_cert_path": "./serverchain.pem",
     "safety": "on"
 }

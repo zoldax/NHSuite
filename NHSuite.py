@@ -50,7 +50,10 @@ def main():
 
     if args.export_file:
         lines_exported = qradar_nh.write_network_hierarchy_to_csv(args.export_file)
-        print(f"{lines_exported} lines exported successfully! (including col headers)")
+        if lines_exported == 1:  # Only header was exported, meaning no data.
+            print("No data exported.")
+        else:
+            print(f"{lines_exported} lines exported successfully! (including col headers)")
 
     elif args.import_file:
         lines_imported = qradar_nh.import_csv_to_qradar(args.import_file)

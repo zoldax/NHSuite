@@ -218,6 +218,8 @@ If you have a custom certificate chain or if the server's certificate chain isn'
 The tool is equipped to handle errors like invalid CIDR format, invalid group name, issues while parsing 'location' and 'country_code' fields, and any unexpected exceptions. Errors are logged using `qradarzoldaxlib.logger.error` on file `error.log`.
 
 A description of handled errors is on the [README-ERROR.md](README-ERROR.md) file.
+A Unitary test result of handled errors is on the [README-UNITARY-TEST.md](README-UNITARY-TEST.md) file.
+
 
 For errors related to the API call of QRadar here is the common API error Message : https://www.ibm.com/docs/en/qradar-common?topic=versions-api-error-messages
 

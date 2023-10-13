@@ -225,7 +225,9 @@ class QRadarNetworkHierarchy:
                     }
                     if not self.valid_network_name_format(row["name"]):
                         print(f"Invalid network name {row['name']} for id {row['id']}.")
+                        print("A network name may only contain letters, numbers, '-', or '_'")
                         qradarzoldaxlib.logger.error(f"Invalid network name {row['name']} for id {row['id']} - aborting import.")
+                        qradarzoldaxlib.logger.error("A network name may only contain letters, numbers, '-', or '_'.")
                     else:
                         name_val = row.get("name","").strip()
                         network_obj["name"] = name_val
@@ -238,7 +240,9 @@ class QRadarNetworkHierarchy:
 
                     if not self.valid_group_format(row["group"]):
                         print(f"Invalid group name {row['group']} for id {row['id']}.")
+                        print("A group name may only contain letters, numbers, '.', '-', or '_'.")
                         qradarzoldaxlib.logger.error(f"Invalid group name {row['group']} for id {row['id']} - abort import -.")
+                        qradarzoldaxlib.logger.error("A group name may only contain letters, numbers, '.', '-', or '_'.")
                     else:
                         group_val = row.get("group", "").strip()
                         network_obj["group"] = group_val

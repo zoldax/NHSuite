@@ -79,6 +79,10 @@ If the function fails to fetch applications from the QRadar API, no specific err
         - When: The provided group name in the CSV is invalid.
         - Location: Method `import_csv_to_qradar`.
 
+    - ❌ `Invalid name {row['name']} for id {row['id']} - abort import -.`
+        - When: The provided name in the CSV is invalid.
+        - Location: Method `import_csv_to_qradar`.
+
     - ⚠️ `Invalid location format {location_val} for id {row['id']} - import continue - but value set to null.`
         - When: The provided location format in the CSV is invalid.
         - Location: Method `import_csv_to_qradar`.

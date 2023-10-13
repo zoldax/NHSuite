@@ -1,4 +1,4 @@
-# 🛠️NHSuite 🛠
+# 🛠️NHSuite 🛠for IBM QRadar SIEM
 
 NHSuite allows users to efficiently manage their QRadar Network Hierarchy. Utilizing the provided QRadar API, users can seamlessly export, import, and check domain-specific hierarchies in a CSV format.
 

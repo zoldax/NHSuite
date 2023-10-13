@@ -1,6 +1,6 @@
 # 🛠️NHSuite 🛠for IBM QRadar SIEM
 
-NHSuite allows users to efficiently manage their QRadar Network Hierarchy. Utilizing the provided QRadar API, users can seamlessly export, import, and check domain-specific hierarchies in a CSV format.
+NHSuite allows users to efficiently manage their QRadar Network Hierarchy. Utilizing the provided QRadar API, users can seamlessly export, import, and fetch domain information in a CSV format.
 
 ---
 # Table of Contents
@@ -106,14 +106,6 @@ python3 NHSuite.py --check-version
 ## 📤 Outputs
 - CSV File (when exporting) that includes fields such as `id`, `group`, `name`, `cidr`, `description`, `domain_id`, `location`, `country_code`.
 - Console prints with domain information when `--check-domain` is used.
-
-## 🔑 Functionalities & Key Function
-1. `fetch_network_hierarchy()`: Fetches the QRadar Network Hierarchy.
-2. `write_network_hierarchy_to_csv()`: Exports the fetched network hierarchy to a specified CSV file.
-3. `import_csv_to_qradar()`: Imports network hierarchy data from a given CSV to QRadar.
-4. `check_domain()`: Fetches and displays domain information from QRadar.
-5. Validation functions: Various functions are provided to validate CIDR, location format, country code, and group format.
-6. `backup_current_hierarchy()` : Before importing a new network hierarchy, if safety is on backup of the current Network Hierarchy before Import. 
 
 ## 🛠Configuration: `config.txt` 
 

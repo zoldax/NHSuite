@@ -196,7 +196,7 @@ class QRadarNetworkHierarchy:
         """
         Import data from the given CSV file to QRadar via the API.
         """
-        if 'safety' in qradarzoldaxlib.config and qradarzoldaxlib.config['safety'].lower() == "on":
+        if 'safety' in qradarzoldaxlib.config and qradarzoldaxlib.config['safety'].lower() != "off":
             backup_success = self.backup_current_hierarchy()
 
             if not backup_success:

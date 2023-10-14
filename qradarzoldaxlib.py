@@ -30,6 +30,11 @@ import os
 from typing import Union
 from typing import Optional
 
+# Constants for Default Configuration Values
+DEFAULT_VERSION = "15.0"
+DEFAULT_ACCEPT = "application/json"
+CONFIG_FILE = "config.txt"
+
 # Desactivate warning ssl
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -38,7 +43,7 @@ LOG_FILENAME = 'error.log'
 logging.basicConfig(filename=LOG_FILENAME, level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger()
 
-def read_config(filename: str = 'config.txt') -> dict:
+def read_config(filename: str = CONFIG_FILE) -> dict:
     """
     Reads the configuration from a specified JSON file.
 

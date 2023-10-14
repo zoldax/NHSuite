@@ -168,11 +168,23 @@ class QRadarNetworkHierarchy:
     def fetch_network_hierarchy(self):
         """Fetch the QRadar Network Hierarchy."""
         url = f"{self.base_url}/api/config/network_hierarchy/networks"
-        hierarchy_data = qradarzoldaxlib.make_request(url, "GET")
-        if not isinstance(hierarchy_data, list):
-            qradarzoldaxlib.logger.error(f"Unexpected data format received: {hierarchy_data}")
+
+        # Assume qradarzoldaxlib.make_request can potentially raise exceptions on its own
+        try:
+            hierarchy_data = qradarzoldaxlib.make_request(url, "GET")
+
+            # Check if the data is not a list, which means something unexpected happened
+            if not isinstance(hierarchy_data, list):
+                message = f"Unexpected data format received: {hierarchy_data}"
+                qradarzoldaxlib.logger.error(message)
+                raise ValueError(message)
+
+            return hierarchy_data
+
+        except Exception as e:
+            # We can either raise the exception again or handle it gracefully
+            qradarzoldaxlib.logger.error(f"Error fetching QRadar Network Hierarchy: {str(e)}")
             return []
-        return hierarchy_data
 
     def write_network_hierarchy_to_csv(self, filename="network_hierarchy.csv"):
         """

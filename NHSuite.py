@@ -25,16 +25,33 @@
 
 """
 
-import csv
-import re
-import json
 import argparse
-import ipaddress
-import os
 import qradarzoldaxlib
 from qradarzoldaxclass import QRadarNetworkHierarchy
-from datetime import datetime
-from typing import Union
+
+# export_data and import_data helper functions to handle exporting and importing 
+
+def export_data(qradar_nh, export_file):
+    """Export data to CSV file."""
+    try:
+        lines_exported = qradar_nh.write_network_hierarchy_to_csv(export_file)
+        if lines_exported == 1:  # Only header was exported, meaning no data.
+            return "No data exported."
+        else:
+            return f"{lines_exported} lines exported successfully! (including col headers)"
+    except Exception as e:
+        return f"Error during export: {e}"
+
+def import_data(qradar_nh, import_file):
+    """Import data from CSV file."""
+    try:
+        lines_imported = qradar_nh.import_csv_to_qradar(import_file)
+        if isinstance(lines_imported, int) and lines_imported > 0:
+            return f"{lines_imported} lines imported successfully!"
+        else:
+            return "Data import failed."
+    except Exception as e:
+        return f"Error during import: {e}"
 
 def main():
     """Main function to handle command-line arguments and execute desired actions."""
@@ -49,27 +66,29 @@ def main():
     args = parser.parse_args()
 
     if args.export_file:
-        lines_exported = qradar_nh.write_network_hierarchy_to_csv(args.export_file)
-        if lines_exported == 1:  # Only header was exported, meaning no data.
-            print("No data exported.")
-        else:
-            print(f"{lines_exported} lines exported successfully! (including col headers)")
+        print("Please wait... exporting data.")
+        print(export_data(qradar_nh, args.export_file))
 
     elif args.import_file:
-        lines_imported = qradar_nh.import_csv_to_qradar(args.import_file)
-        if isinstance(lines_imported, int) and lines_imported > 0:
-            print(f"{lines_imported} lines imported successfully!")
-        else:
-            print("Data import failed.")
+        print("Please wait... importing data.")
+        print(import_data(qradar_nh, args.import_file))
 
     elif args.check_domain:
-        qradar_nh.check_domain()
+        try:
+            qradar_nh.check_domain()
+        except Exception as e:
+            print(f"Error checking domain: {e}")
 
-    elif args.check_version:  
-        qradarzoldaxlib.print_qradar_version()
+    elif args.check_version:
+        try:
+            qradarzoldaxlib.print_qradar_version()
+        except Exception as e:
+            print(f"Error checking version: {e}")
 
     else:
         parser.print_help()
 
 if __name__ == "__main__":
     main()
+
+

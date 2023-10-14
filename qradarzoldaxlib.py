@@ -143,7 +143,8 @@ def get_app_id(app_name: str = "QRadar Use Case Manager") -> str:
     """
     url = f"https://{config['ip_QRadar']}/api/gui_app_framework/application_definitions"
     apps = make_request(url)
-    if not apps:
+    # Add a condition to prevent potential infinite loop
+    if not isinstance(apps, list):
         return ""
     for app in apps:
         manifest = app.get("manifest", {})

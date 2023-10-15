@@ -229,6 +229,7 @@ class QRadarNetworkHierarchy:
 
         url = f"{self.base_url}/api/config/network_hierarchy/staged_networks"
         network_hierarchy_data = []
+
         try:
             with open(csv_filename, 'r', newline='', encoding='utf-8') as csv_file:
                 reader = csv.DictReader(csv_file)
@@ -240,55 +241,64 @@ class QRadarNetworkHierarchy:
                     return False
 
                 for row in reader:
-                    network_obj = {
-                        "id": int(row["id"]),
-                        #"name": row["name"],
-                        "description": row["description"],
-                        "domain_id": int(row["domain_id"]),
-                    }
-                    if not self.valid_network_name_format(row["name"]):
-                        print(f"Invalid network name {row['name']} for id {row['id']}.")
-                        print("A network name may only contain letters, numbers, '-', or '_'")
-                        qradarzoldaxlib.logger.error(f"Invalid network name {row['name']} for id {row['id']} - aborting import.")
-                        qradarzoldaxlib.logger.error("A network name may only contain letters, numbers, '-', or '_'.")
-                    else:
-                        name_val = row.get("name","").strip()
-                        network_obj["name"] = name_val
-                    if not self.valid_cidr_format(row["cidr"]):
-                        print(f"Invalid cidr {row['cidr']} for id {row['id']}.")
-                        qradarzoldaxlib.logger.error(f"Invalid cidr {row['cidr']} for id {row['id']} - abort import.")
-                    else:
-                        cidr_val = row.get("cidr", "").strip()
-                        network_obj["cidr"] = cidr_val
+                    try:
+                        network_obj = {
+                            "id": int(row["id"]),
+                            "description": row["description"],
+                            "domain_id": int(row["domain_id"]),
+                        }
 
-                    if not self.valid_group_format(row["group"]):
-                        print(f"Invalid group name {row['group']} for id {row['id']}.")
-                        print("A group name may only contain letters, numbers, '.', '-', or '_'.")
-                        qradarzoldaxlib.logger.error(f"Invalid group name {row['group']} for id {row['id']} - abort import -.")
-                        qradarzoldaxlib.logger.error("A group name may only contain letters, numbers, '.', '-', or '_'.")
-                    else:
-                        group_val = row.get("group", "").strip()
-                        network_obj["group"] = group_val
-
-                    location_val = row.get("location", "").strip()
-                    if location_val and location_val != "N/A":
-                        if self.valid_location_format(location_val):
-                            formatted_location = self.format_location(location_val)
-                            network_obj["location"] = formatted_location
+                        name_val = row.get("name", "").strip()
+                        if not self.valid_network_name_format(row["name"]):
+                            print(f"Invalid network name {row['name']} for id {row['id']}.")
+                            print("A network name may only contain letters, numbers, '-', or '_'")
+                            qradarzoldaxlib.logger.error(f"Invalid network name {row['name']} for id {row['id']} - aborting import.")
+                            qradarzoldaxlib.logger.error("A network name may only contain letters, numbers, '-', or '_'.")
                         else:
-                            print(f"Invalid location format {location_val} for id {row['id']} - import continue - but value set to null.")
-                            qradarzoldaxlib.logger.error(f"Invalid location format {location_val} for id {row['id']} - import continue - but value set to null.")
+                            network_obj["name"] = name_val
 
-                    country_code_val = row.get("country_code", "").strip()
-                    if country_code_val and country_code_val != "N/A":
-                        if self.valid_country_code_format(country_code_val):
-                            network_obj["country_code"] = country_code_val
+                        if not self.valid_cidr_format(row["cidr"]):
+                            print(f"Invalid cidr {row['cidr']} for id {row['id']}.")
+                            qradarzoldaxlib.logger.error(f"Invalid cidr {row['cidr']} for id {row['id']} - abort import.")
                         else:
-                            print(f"Invalid country code {country_code_val} for id {row['id']} - import continue - but value set to null.")
-                            qradarzoldaxlib.logger.error(f"Invalid country code {country_code_val} for id {row['id']} - import continue - but value set to null.")
+                            cidr_val = row.get("cidr", "").strip()
+                            network_obj["cidr"] = cidr_val
 
-                    network_hierarchy_data.append(network_obj)
-                    #Debug print(f"Network NH info {network_hierarchy_data}")
+                        if not self.valid_group_format(row["group"]):
+                            print(f"Invalid group name {row['group']} for id {row['id']}.")
+                            print("A group name may only contain letters, numbers, '.', '-', or '_'.")
+                            qradarzoldaxlib.logger.error(f"Invalid group name {row['group']} for id {row['id']} - abort import -.")
+                            qradarzoldaxlib.logger.error("A group name may only contain letters, numbers, '.', '-', or '_'.")
+                        else:
+                            group_val = row.get("group", "").strip()
+                            network_obj["group"] = group_val
+
+                        location_val = row.get("location", "").strip()
+                        if location_val and location_val != "N/A":
+                            if self.valid_location_format(location_val):
+                                formatted_location = self.format_location(location_val)
+                                network_obj["location"] = formatted_location
+                            else:
+                                print(f"Invalid location format {location_val} for id {row['id']} - import continue - but value set to null.")
+                                qradarzoldaxlib.logger.error(f"Invalid location format {location_val} for id {row['id']} - import continue - but value set to null.")
+
+                        country_code_val = row.get("country_code", "").strip()
+                        if country_code_val and country_code_val != "N/A":
+                            if self.valid_country_code_format(country_code_val):
+                                network_obj["country_code"] = country_code_val
+                            else:
+                                print(f"Invalid country code {country_code_val} for id {row['id']} - import continue - but value set to null.")
+                                qradarzoldaxlib.logger.error(f"Invalid country code {country_code_val} for id {row['id']} - import continue - but value set to null.")
+
+                        network_hierarchy_data.append(network_obj)
+
+                    except KeyError as ke:
+                        missing_column = ke.args[0]
+                        qradarzoldaxlib.logger.error(f"Missing value for column '{missing_column}' in row {reader.line_num}.")
+                        return False
+                    except ValueError as ve:  # This is to catch any int conversion errors
+                        qradarzoldaxlib.logger.error(f"Invalid value in row {reader.line_num}: {ve}")
+                        return False
 
             response = qradarzoldaxlib.make_request(url, "PUT", params=json.dumps(network_hierarchy_data))
             if response:
@@ -304,7 +314,6 @@ class QRadarNetworkHierarchy:
             qradarzoldaxlib.logger.error(f"Error reading CSV file {csv_filename}.")
             return False
         except Exception as e:
-            print("Test3")
             qradarzoldaxlib.logger.error(f"An unexpected error occurred: {e}")
             return False
 

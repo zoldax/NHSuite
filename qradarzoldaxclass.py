@@ -224,7 +224,7 @@ class QRadarNetworkHierarchy:
             backup_success = self.backup_current_hierarchy()
         else:
             print("Safety parameter is off, no backup from server"
-            qradar.zoldaxlib.logger.error("Safety parameter is off, no backup from server"
+            qradar.zoldaxlib.logger.error("Safety parameter is off, no backup from server")
 
             if not backup_success:
                 qradarzoldaxlib.logger.error("Backup failed. Aborting the import process for safety.")

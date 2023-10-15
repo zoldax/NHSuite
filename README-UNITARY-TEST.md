@@ -1,6 +1,6 @@
 # Unitary Tests NHUtil for IBM QRadar Network Hierarchy 
 
-# Author : Pascal Weber (zoldax)
+## Author : Pascal Weber (zoldax)
 
 📝 This document summarizes different unitary tests performed with the NHUtil for QRadar tool to catch errors.
 

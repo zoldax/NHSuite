@@ -1,6 +1,6 @@
 # 📘 Unitary Tests Overview NHSuite for QRadar
 
-## ✍️ Author: Pascal Weber (zoldax)
+### ✍️ Author: Pascal Weber (zoldax)
 
 ## 📋 Table of Contents
 - [🔧 Preparation](#preparation)

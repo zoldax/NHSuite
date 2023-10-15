@@ -1,4 +1,4 @@
-# ⚙️ QRadar Interaction Library: Error Logging
+# NHSuite for IBM QRadar SIEM : Interaction library : Error Logging
 
 ### 🖋️ Author
 - **Pascal Weber (zoldax)**

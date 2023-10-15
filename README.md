@@ -212,7 +212,7 @@ The tool is equipped to handle errors like invalid CIDR format, invalid group na
 - A description of handled errors is on the [README-ERROR.md](README-ERROR.md) file.
 - A Unitary test result of handled errors is on the [README-UNITARY-TEST.md](README-UNITARY-TEST.md) file.
 - A Unitary test methodology of handled errors is on the [README-UNITARY-OVERVIEW.md](README-UNITARY-OVERVIEW.md) file.
-- A Unitary battery test result is on the [README-UNITARY-RESULTS.txt](README-UNITARY-RESULTS.txt) file.
+- A Unitary battery test result is on the [README-UNITARY-TEST-RESULTS.txt](README-UNITARY-TEST-RESULTS.txt) file.
 
 
 For errors related to the API call of QRadar here is the common API error Message : https://www.ibm.com/docs/en/qradar-common?topic=versions-api-error-messages

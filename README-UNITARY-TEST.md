@@ -52,8 +52,12 @@
   - Output: `Expected one argument`
 
 - 🚫 **Incorrect File Structure for Importing (No Headers)**
-  - Output: `Data import failed.`
-  - Error.log: `[2023-10-13 14:42:33,430] - ERROR - An unexpected error occurred: 'id'`
+  - Output: `Header is not correct, must be id,group,name,cidr,description,domain_id,location,country_code.`
+  - Error.log: `10-13 14:42:33,430] - ERROR - Header is not correct, must be id,group,name,cidr,description,domain_id,location,country_code.`
+
+- 🚫 **Incorrect File Structure for Importing (Wrong Headers)**
+  - Output: `Header is not correct, must be id,group,name,cidr,description,domain_id,location,country_code.`
+  - Error.log: `10-13 14:42:33,430] - ERROR - Header is not correct, must be id,group,name,cidr,description,domain_id,location,country_code.`
 
 - 🚫 **Incorrect File Structure for Importing (Just the Headers) (HTTP 422)**
   - Output: `Data import failed.`

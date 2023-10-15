@@ -354,7 +354,7 @@ class QRadarNetworkHierarchy:
 
             timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
             backup_filename = f"safety/backup-before-import-NH-{qradarzoldaxlib.config['ip_QRadar']}-{timestamp}.csv"
-            print(f"Safety parameter is on, actual Network hiearchy backuped in {backup_filename} before import")
+            print(f"Safety parameter is on, actual Network Hierarchy backuped in {backup_filename} before import")
 
             self.write_network_hierarchy_to_csv(backup_filename)
             return True

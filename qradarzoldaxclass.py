@@ -299,12 +299,16 @@ class QRadarNetworkHierarchy:
                     except ValueError as ve:  # This is to catch any int conversion errors
                         qradarzoldaxlib.logger.error(f"Invalid value in row {reader.line_num}: {ve}")
                         return False
+                    except Exception as e:
+                        qradarzoldaxlib.logger.error(f"Problems with the data from your file {e}")
+                        return False
 
             response = qradarzoldaxlib.make_request(url, "PUT", params=json.dumps(network_hierarchy_data))
             if response:
                 return len(network_hierarchy_data)
             else:
-                qradarzoldaxlib.logger.error(f"Failed to import data from {csv_filename}")
+                qradarzoldaxlib.logger.error(f"Failed to import data from {csv_filename} incorrect format, guessing no data")
+                print(f"Failed to import data from {csv_filename} incorrect format, guessing no data")
                 return False
 
         except FileNotFoundError:

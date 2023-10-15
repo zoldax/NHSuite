@@ -38,7 +38,7 @@ def export_data(qradar_nh, export_file):
         if lines_exported == 1:  # Only header was exported, meaning no data.
             return "No data exported."
         else:
-            return f"{lines_exported} lines exported successfully! (including col headers)"
+            return f"{lines_exported} lines exported successfully in file : {export_file} ! (including col headers)"
     except Exception as e:
         return f"Error during export: {e}"
 

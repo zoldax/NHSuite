@@ -307,8 +307,8 @@ class QRadarNetworkHierarchy:
             if response:
                 return len(network_hierarchy_data)
             else:
-                qradarzoldaxlib.logger.error(f"Failed to import data from {csv_filename} incorrect format, guessing no data")
-                print(f"Failed to import data from {csv_filename} incorrect format, guessing no data")
+                qradarzoldaxlib.logger.error(f"Failed to import data from {csv_filename} incorrect format (no data) or incorrect data")
+                print(f"Failed to import data from {csv_filename} incorrect format (no data) or incorrect data")
                 return False
 
         except FileNotFoundError:

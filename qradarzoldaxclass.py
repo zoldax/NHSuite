@@ -209,13 +209,17 @@ class QRadarNetworkHierarchy:
                 entry["location"] = location_str
                 data = [entry.get(key, 'N/A') for key in columns]
                 writer.writerow(data)
-            #Pascal test
+
             return len(hierarchy_data) + 1
 
     def import_csv_to_qradar(self, csv_filename: str) -> Union[bool, int]:
         """
         Import data from the given CSV file to QRadar via the API.
         """
+
+        # Expected Network Hierarchy header for the CSV file
+        expected_header = ["id", "group", "name", "cidr", "description", "domain_id", "location", "country_code"]
+
         if 'safety' in qradarzoldaxlib.config and qradarzoldaxlib.config['safety'].lower() != "off":
             backup_success = self.backup_current_hierarchy()
 
@@ -228,6 +232,13 @@ class QRadarNetworkHierarchy:
         try:
             with open(csv_filename, 'r', newline='', encoding='utf-8') as csv_file:
                 reader = csv.DictReader(csv_file)
+
+                # Check if the header matches the expected header
+                if reader.fieldnames != expected_header:
+                    print("Header is not correct, must be id,group,name,cidr,description,domain_id,location,country_code.")
+                    qradarzoldaxlib.logger.error("Header is not correct, must be id,group,name,cidr,description,domain_id,location,country_code.")
+                    return False
+
                 for row in reader:
                     network_obj = {
                         "id": int(row["id"]),
@@ -293,6 +304,7 @@ class QRadarNetworkHierarchy:
             qradarzoldaxlib.logger.error(f"Error reading CSV file {csv_filename}.")
             return False
         except Exception as e:
+            print("Test3")
             qradarzoldaxlib.logger.error(f"An unexpected error occurred: {e}")
             return False
 

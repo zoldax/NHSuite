@@ -268,7 +268,7 @@ class QRadarNetworkHierarchy:
                             network_obj["cidr"] = cidr_val
 
                         if not self.valid_group_format(row["group"]):
-                            print(f"Invalid group name {row['group']} for id {row['id']}.")
+                            print(f"Invalid group name {row['group']} for id {row['id']} - abort import.")
                             print("A group name may only contain letters, numbers, '.', '-', or '_'.")
                             qradarzoldaxlib.logger.error(f"Invalid group name {row['group']} for id {row['id']} - abort import -.")
                             qradarzoldaxlib.logger.error("A group name may only contain letters, numbers, '.', '-', or '_'.")

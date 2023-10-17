@@ -221,7 +221,9 @@ For errors related to the API call of QRadar here is the common API error Messag
 
 ## 📝 Notes
 
-Always test any modifications in a safe environment. Do backups !
+Always test any modifications in a safe and non production environment. Do backups !
+
+This Python tool, NHSuite, has been developed through countless hours of hard work and dedication. We are pleased to offer it to the community as a free and open-source resource, a testament to our commitment to supporting and enhancing our QRadar community.
 
 Please consult IBM Guidelines for building a Network hierarchy : https://www.ibm.com/docs/en/qradar-on-cloud?topic=hierarchy-guidelines-defining-your-network
 

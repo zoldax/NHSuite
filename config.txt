@@ -1,5 +1,5 @@
 {
-    "ip_QRadar": "192.168.10.146",
+    "ip_QRadar": "qradardemo.zoldaxcorp.lan",
     "auth": "a913b05c-cb81-4d2f-b286-2572f0c4baee",
     "Version": "17.0",
     "Accept": "application/json",

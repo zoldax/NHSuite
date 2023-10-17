@@ -2,6 +2,8 @@
 
 NHSuite allows users to efficiently manage their QRadar Network Hierarchy. Utilizing the provided QRadar API, users can seamlessly export, import, and fetch domain information in a CSV format.
 
+[![License](https://img.shields.io/github/license/zoldax/NHSuite?color=44CC11)](LICENSE)  [![Commit](https://img.shields.io/github/commit-activity/t/zoldax/NHSuite)](https://github.com/zoldax/NHSuite/commits/)  [![Views](https://hits.sh/github.com/zoldax/NHSuite.svg)](https://hits.sh/github.com/zoldax/NHSuite/) [![Last commit](https://img.shields.io/github/last-commit/zoldax/NHSuite/main)](https://github.com/zoldax/NHSuite/commits/main)
+
 ---
 # Table of Contents
 - [🛠️NHSuite](#️nhsuite)
@@ -211,7 +213,7 @@ The tool is equipped to handle errors like invalid CIDR format, invalid group na
 
 - A description of handled errors is on the [README-ERROR.md](README-ERROR.md) file.
 - A Unitary test result of handled errors is on the [README-UNITARY-TEST.md](README-UNITARY-TEST.md) file.
-- A Unitary test methodology of handled errors is on the [README-UNITARY-OVERVIEW.md](README-UNITARY-OVERVIEW.md) file.
+- A Unitary test methodology of handled errors is on the [README-UNITARY-TEST-OVERVIEW.md](README-UNITARY-TEST-OVERVIEW.md) file.
 - A Unitary battery test result is on the [README-UNITARY-TEST-RESULTS.txt](README-UNITARY-TEST-RESULTS.txt) file.
 
 
@@ -219,7 +221,7 @@ For errors related to the API call of QRadar here is the common API error Messag
 
 ## 📝 Notes
 
-Always test any modifications in a safe environment.
+Always test any modifications in a safe environment. Do backups !
 
 Please consult IBM Guidelines for building a Network hierarchy : https://www.ibm.com/docs/en/qradar-on-cloud?topic=hierarchy-guidelines-defining-your-network
 

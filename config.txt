@@ -4,6 +4,6 @@
     "Version": "17.0",
     "Accept": "application/json",
     "verify_ssl": "False",        
-    "ssl_cert_path": "./aserverchain.pem",
+    "ssl_cert_path": "./serverchain.pem",
     "safety": "on"
 }

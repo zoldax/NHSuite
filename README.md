@@ -158,7 +158,7 @@ This parameter determines whether the SSL certificate validation should be perfo
 
 ### 6. `ssl_cert_path`
 
-If you have a custom certificate chain for SSL verification, or if the server's certificate chain isn't recognized by the default set of trusted certificate authorities on your system, you can specify a PEM file containing the entire certificate chain.
+If you have a custom certificate chain for SSL verification, or if the server's certificate chain isn't recognized by the default set of trusted certificate authorities on your system, you can specify a PEM file containing the entire certificate chain. (CA pem file from your PKI for example)
 
 ```json
 "ssl_cert_path": "/path/to/certchained.pem"

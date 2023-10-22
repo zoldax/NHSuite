@@ -182,7 +182,7 @@ def print_qradar_version():
     """Retrieve and print QRadar system information."""
     system_info = get_system_info()
     print(f"QRadar System Information: {config['ip_QRadar']}")
-    print(f"release_name: {system_info['release_name']}")
-    print(f"build_version: {system_info['build_version']}")
-    print(f"fips_enabled: {system_info['fips_enabled']}")
-    print(f"external_version: {system_info['external_version']}")
+    print(f"release_name: {system_info.get('release_name', 'N/A')}")
+    print(f"build_version: {system_info.get('build_version', 'N/A')}")
+    print(f"fips_enabled: {system_info.get('fips_enabled', 'N/A')}")
+    print(f"external_version: {system_info.get('external_version', 'N/A')}")

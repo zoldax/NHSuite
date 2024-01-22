@@ -227,6 +227,42 @@ This Python tool, NHSuite, has been developed through countless hours of hard wo
 
 Please consult IBM Guidelines for building a Network hierarchy : https://www.ibm.com/docs/en/qradar-on-cloud?topic=hierarchy-guidelines-defining-your-network
 
+## Environment and Prerequisite
+
+The script can work directly on QRadar (Tested on 7.5.X) or on a remote Linux machine (Debian) meeting the requirements (preferred method).
+
+### Working Directly on QRadar
+
+**Qradar > 7.5.0 (Python 3.6 (Use of f-strings))**
+
+The script has been designed with flexibility in mind. For those who have direct access and the required privileges, the script can operate directly on a QRadar system. We have verified its compatibility with QRadar versions 7.5.x. This direct method allows for streamlined integration and quick access to QRadar's features without the need for additional configurations.
+
+However, there are some considerations when working directly on QRadar.
+
+### Working on a Remote Linux Machine (Preferred Method)
+
+For a more isolated and controlled environment, we recommend executing the script on a remote 🐧 Linux machine. Our tests have particularly been positive on Debian-based systems.
+
+This method has several advantages:
+
+- 🏝️ **Isolation:** Running the script remotely ensures that QRadar's primary functions remain undisturbed. There's no risk of unintentionally consuming excessive resources on the QRadar system.
+- 🤸 **Flexibility:** A separate Linux machine provides more freedom for customization, debugging, and script optimization. This can be especially beneficial when integrating the script with other tools or systems.
+- 🛡️ **Security:** Operating the script remotely can add a layer of security. By limiting direct access to the QRadar system, you can further safeguard against potential threats or mishaps.
+
+#### 📋 Requirements for the Remote Linux Machine:
+
+- **Python Version:** Ensure that Python is installed, preferably a version that supports f-strings (Python 3.6 and above).
+- **Network Access:** The remote machine should have network access to QRadar for API calls. Ensure that any firewalls or security groups allow for the necessary communication between the two systems.
+- **Required Libraries:** The script might rely on specific Python libraries. These should be installed and kept updated on the remote machine.
+- **Authentication:** API authentication details, like tokens or credentials, should be securely managed. Consider using environment variables or secure configuration files.
+
+##### 🧪 Tested on my side on:
+
+- debian Bullseye (11.7)
+- Python 3.9.2
+- Requests==2.31.0
+- urllib3==1.26.5
+
 ## 🤝 Contribution
 
 We warmly welcome contributions from everyone! If you have ideas, code, bug fixes, or anything else you'd like to share, please do so. Your insights and expertise can help improve the project for the entire community. Thank you for being a part of our journey! 🌟
